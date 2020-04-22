@@ -13,7 +13,9 @@ namespace Basureneitor
 {
     public partial class AnalizadorLexico : Form
     {
-        
+        public static string rutaConfig2 = @".\codigo.txt";
+        string[] CodigoLineas = System.IO.File.ReadAllLines(rutaConfig2);
+
         public AnalizadorLexico()
         {
             InitializeComponent();
@@ -22,6 +24,14 @@ namespace Basureneitor
         
         List<Linea> lineas = new List<Linea>();
 
+        private void CargarCodigo()
+        {
+            foreach (string s in CodigoLineas)
+            {
+                rtbEntrada.AppendText(s + "\n");
+            }
+            lblLineas.Text = rtbEntrada.Lines.Count().ToString();
+        }
         private void RtbEntrada_TextChanged(object sender, EventArgs e)
         {
            
@@ -200,6 +210,7 @@ namespace Basureneitor
 
         private void BtnCargar_Click(object sender, EventArgs e)
         {
+            CargarCodigo();
             numeros.Clear();
             decimales.Clear();
             cadenas.Clear();
@@ -234,7 +245,7 @@ namespace Basureneitor
                     i.token = ObtenerToken(i.caracteres);
                     if (i.token == null)
                     {
-                        MessageBox.Show($"Error en la palabra reservada {i.contenido}, no existe un camino en su matriz de transicion que de como resultado un token.");
+                        MessageBox.Show($"Error en la palabra reservada {i.contenido},\n No se ecuentra token.");
                     }
                     else
                     {
@@ -245,6 +256,25 @@ namespace Basureneitor
                 if (!String.IsNullOrEmpty(l.contenido))
                     rtbSalida.Text += (" \n");
             }
+            dgvMostrar.Rows.Clear();
+            foreach (KeyValuePair<string, string> n in numeros)
+            {
+                dgvMostrar.Rows.Add(n.Key, n.Value);
+            }
+            foreach (KeyValuePair<string, string> n in decimales)
+            {
+                dgvMostrar.Rows.Add(n.Key, n.Value);
+            }
+            foreach (KeyValuePair<string, string> n in cadenas)
+            {
+                dgvMostrar.Rows.Add(n.Key, n.Value);
+            }
+            foreach (KeyValuePair<string, string> n in variables)
+            {
+                dgvMostrar.Rows.Add(n.Key, n.Value);
+            }
+
+
         }
 
         private Dictionary<string, string> numeros = new Dictionary<string, string>();
@@ -260,12 +290,12 @@ namespace Basureneitor
 
                 switch (_token.Substring(0, 2))
                 {
-                    case "NU":
+                    case "CO":
 
                         if (numeros.Count == 0)
                         {
                             digito++;
-                            newToken = "NU" + "0" + digito.ToString();
+                            newToken = "CO" + "0" + digito.ToString();
                             numeros.Add(_valor, newToken);
                         }
                         else
@@ -274,12 +304,12 @@ namespace Basureneitor
                             if (digito < 9)
                             {
                                 digito++;
-                                newToken = "NU" + "0" + digito.ToString();
+                                newToken = "CO" + "0" + digito.ToString();
                             }
                             else
                             {
                                 digito++;
-                                newToken = "NU" + digito.ToString();
+                                newToken = "CO" + digito.ToString();
                             }
                             if (!numeros.ContainsKey(_valor))
                             {
@@ -290,12 +320,6 @@ namespace Basureneitor
                                 newToken = numeros[_valor];
                             }
                         }
-
-
-
-
-
-
                         break;
                     case "DE":
                         if (decimales.Count == 0)

@@ -32,22 +32,25 @@
             this.btnCargar = new System.Windows.Forms.Button();
             this.rtbSalida = new System.Windows.Forms.RichTextBox();
             this.rtbEntrada = new System.Windows.Forms.RichTextBox();
-            this.dgvMuestra = new System.Windows.Forms.DataGridView();
+            this.dgvMostrar = new System.Windows.Forms.DataGridView();
             this.Token = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Linea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblLineas = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.lblLineas);
             this.panel1.Controls.Add(this.btnCargar);
             this.panel1.Controls.Add(this.rtbSalida);
             this.panel1.Controls.Add(this.rtbEntrada);
-            this.panel1.Controls.Add(this.dgvMuestra);
+            this.panel1.Controls.Add(this.dgvMostrar);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -83,32 +86,26 @@
             this.rtbEntrada.Text = "";
             this.rtbEntrada.TextChanged += new System.EventHandler(this.RtbEntrada_TextChanged);
             // 
-            // dgvMuestra
+            // dgvMostrar
             // 
-            this.dgvMuestra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMuestra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvMostrar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMostrar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Token,
-            this.Nombre,
-            this.Linea});
-            this.dgvMuestra.Location = new System.Drawing.Point(15, 245);
-            this.dgvMuestra.Name = "dgvMuestra";
-            this.dgvMuestra.Size = new System.Drawing.Size(347, 112);
-            this.dgvMuestra.TabIndex = 4;
+            this.Valor});
+            this.dgvMostrar.Location = new System.Drawing.Point(15, 245);
+            this.dgvMostrar.Name = "dgvMostrar";
+            this.dgvMostrar.Size = new System.Drawing.Size(243, 112);
+            this.dgvMostrar.TabIndex = 4;
             // 
             // Token
             // 
             this.Token.HeaderText = "Token";
             this.Token.Name = "Token";
             // 
-            // Nombre
+            // Valor
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Linea
-            // 
-            this.Linea.HeaderText = "Linea";
-            this.Linea.Name = "Linea";
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
             // 
             // label2
             // 
@@ -128,6 +125,25 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Código";
             // 
+            // lblLineas
+            // 
+            this.lblLineas.AutoSize = true;
+            this.lblLineas.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLineas.Location = new System.Drawing.Point(404, 95);
+            this.lblLineas.Name = "lblLineas";
+            this.lblLineas.Size = new System.Drawing.Size(27, 29);
+            this.lblLineas.TabIndex = 8;
+            this.lblLineas.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(375, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Total de Lineas:";
+            // 
             // AnalizadorLexico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,7 +154,7 @@
             this.Text = "Analizador Lexico";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMuestra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,13 +164,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvMuestra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Token;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Linea;
+        private System.Windows.Forms.DataGridView dgvMostrar;
         private System.Windows.Forms.RichTextBox rtbSalida;
         private System.Windows.Forms.RichTextBox rtbEntrada;
         private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Token;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLineas;
     }
 }
 
